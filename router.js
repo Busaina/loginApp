@@ -2,14 +2,15 @@ var express = require("express");
 var router = express.Router();
 
 const credentials = {
-  email: ["admin@gmail.com", "busaina@gmail.com"],
-  password: ["admin123", "busaina"],
+  email: ["admin@gmail.com", "busaina@gmail.com", "zenab@gmail.com"],
+  password: ["admin123", "busaina", "zenab"],
 };
 
 router.post("/login", (req, res) => {
   if (
     credentials.email.includes(req.body.email) &&
-    credentials.password[credentials.email[req.body.email]] == req.body.password
+    credentials.password[credentials.email.indexOf(req.body.email)] ==
+      req.body.password
   ) {
     req.session.user = req.body.email;
     res.redirect("/route/dashboard");
