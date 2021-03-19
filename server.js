@@ -24,10 +24,20 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 //home route
 app.get("/", (req, res) => {
-  res.render("base", { title: "Login System" });
+  res.render("home.ejs");
 });
-
-
+app.get("/login", (req, res) => {
+  res.render("login", {
+    title: "Login System",
+    subtitle: "Login for the existing user",
+  });
+});
+app.get("/signup", (req, res) => {
+  res.render("signup", {
+    title: "Signup System",
+    subtitle: "signup for the new user",
+  });
+});
 
 app.listen(port, () => {
   console.log("server 3000");

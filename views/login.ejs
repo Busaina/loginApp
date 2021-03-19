@@ -8,6 +8,7 @@
             <% if(locals.logout){ %> 
                 <div class="alter alert-success text-center"><%=logout%></div>
                 <%}%>
+                <%  if(locals.incorrect){%> <div class="alter alert-decline text-center">Incorrect Email or password</div><%}%>
         </div>
         <form action="/route/login" method='POST' class="pt-3">
             <div class="form-group">

@@ -9,6 +9,7 @@ const credentials = {
     "shabbirmitha786@gmail.com",
   ],
   password: ["admin123", "busaina", "zenab", "shibbu1905"],
+  incorrect: false,
 };
 
 router.post("/login", (req, res) => {
@@ -18,10 +19,18 @@ router.post("/login", (req, res) => {
       req.body.password
   ) {
     req.session.user = req.body.email;
+    console.log(req.session.user);
     res.redirect("/route/dashboard");
   } else {
-    res.send("Invalid email or password");
+    credentials.incorrect = true;
+    res.render("login", { incorrect: credentials.incorrect });
   }
+});
+router.post("/signup", (req, res) => {
+  credentials.email.concat(req.body.email);
+  credentials.password.concat(req.body.password);
+  req.session.user = req.body.email;
+  res.redirect("/route/dashboard");
 });
 
 router.get("/dashboard", (req, res) => {
@@ -37,7 +46,7 @@ router.get("/logout", (req, res) => {
       console.log(err);
       res.send("Error");
     } else {
-      res.render("base", {
+      res.render("home", {
         title: "Express",
         logout: "logout succesfully...!",
       });
