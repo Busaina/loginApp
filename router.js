@@ -27,10 +27,15 @@ router.post("/login", (req, res) => {
   }
 });
 router.post("/signup", (req, res) => {
-  credentials.email.concat(req.body.email);
-  credentials.password.concat(req.body.password);
-  req.session.user = req.body.email;
-  res.redirect("/route/dashboard");
+  if (!credentials.email.includes(req.body.email)) {
+    credentials.email.concat(req.body.email);
+    credentials.password.concat(req.body.password);
+    req.session.user = req.body.email;
+    res.redirect("/route/dashboard");
+  } else {
+    credentials.incorrect = true;
+    res.render("signup", { incorrect: credentials.incorrect });
+  }
 });
 
 router.get("/dashboard", (req, res) => {
