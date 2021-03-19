@@ -19,7 +19,7 @@ router.post("/login", (req, res) => {
       req.body.password
   ) {
     req.session.user = req.body.email;
-    console.log(req.session.user);
+    console.log(credentials.email);
     res.redirect("/route/dashboard");
   } else {
     credentials.incorrect = true;
@@ -28,9 +28,11 @@ router.post("/login", (req, res) => {
 });
 router.post("/signup", (req, res) => {
   if (!credentials.email.includes(req.body.email)) {
-    credentials.email.concat(req.body.email);
-    credentials.password.concat(req.body.password);
+    credentials.email.push(req.body.email);
+    credentials.password.push(req.body.password);
     req.session.user = req.body.email;
+    console.log(credentials.email);
+
     res.redirect("/route/dashboard");
   } else {
     credentials.incorrect = true;
