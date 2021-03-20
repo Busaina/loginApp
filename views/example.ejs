@@ -1,0 +1,25 @@
+<%-include('header')-%>
+
+        <div class="text-center center-div" id='login'>
+            <div class="container w-25 border py-5 mt-5 fmbg">
+                Chat App
+                
+                <form id="message-form">
+        
+                    <input name="name" class="form-control" placeholder="name">
+                    <input name="message"  class="form-control" placeholder="Message" id="msg"><br>
+                    <button class='btn btn-success rounded-pill'>Send</button><br><br>
+        
+        
+                    
+                </form>
+                <a href="/route/logout"><button class='btn btn-success rounded-pill'>Log Out</button></a>
+
+            </div>
+
+        
+        </div>
+        <!-- <button id="send-location">Send location</button> -->
+        <script src="/js/socket.io/client-dist/socket.io.js"></script>
+        <script src="/js/chat.js"></script>
+    <%-include('footer')-%>

@@ -25,3 +25,9 @@ form {
 #login .title > span {
   font-size: 0.8em;
 }
+@media (max-width: 514px) {
+  body {
+    width: 500px;
+    height: 800px;
+  }
+}

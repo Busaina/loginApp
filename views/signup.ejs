@@ -1,6 +1,6 @@
 <%-include('header')-%>
 
-<div class="text-center" id='login'>
+<div class="text-center " id='login'>
     <div class="container w-25 border py-5 fmbg">
         <div class="title">
             <h2 class="font-weight-bold">Sign Up</h2>
@@ -8,7 +8,7 @@
             <% if(locals.logout){ %> 
                 <div class="alter alert-success text-center"><%=logout%></div>
                 <%}%>
-                <%  if(locals.incorrect){%> <div class="alter alert-decline text-center">Email already taken</div><%}%>
+                <%  if(locals.incorrect){%> <div class="alter alert-decline text-center"><%=message%></div><%}%>
         </div>
         <form action="/route/signup" method='POST' class="pt-3">
             <div class="form-group">
