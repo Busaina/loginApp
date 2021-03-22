@@ -30,9 +30,13 @@ app.use(express.static(publicDirectoryPath));
 
 io.on("connection", (socket) => {
   console.log("New WebSocket connection");
+  let name = "";
+  socket.on("dis", (n) => {
+    name = n;
+  });
 
-  socket.emit("message", "Welcome!");
-  socket.broadcast.emit("message", "..");
+  socket.emit("message", `Welcome!`);
+  socket.broadcast.emit("message");
 
   socket.on("sendMessage", (message, callback) => {
     const filter = new Filter();
@@ -54,7 +58,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    io.emit("message", "..");
+    io.emit("message", `${name} has left`);
   });
 });
 

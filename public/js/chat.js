@@ -30,6 +30,7 @@ $messageForm.addEventListener("submit", (e) => {
 
     // console.log("Message delivered!");
   });
+  socket.emit("dis", name);
 });
 
 // $sendLocationButton.addEventListener('click', () => {
