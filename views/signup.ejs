@@ -10,8 +10,9 @@
                 <%}%>
                 <%  if(locals.incorrect){%> <div class="alter alert-decline text-center"><%=message%></div><%}%>
         </div>
-        <form action="/route/signup" method='POST' class="pt-3">
+        <form action="/route/signup" method='POST' class="pt-3" id="u">
             <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" name="username" id="username">
                 <input type="email" class="form-control" placeholder="email" name="email">
                 <small class='form-text text-muted text-left'>Register email address</small>
             </div>
@@ -22,6 +23,9 @@
             <button type='submit' class='btn btn-success rounded-pill'>Submit</button>
         </form>
     </div>
+    <script src="/server.js"></script>
+    <script src="/js/socket.io/client-dist/socket.io.js"></script>
+    <!-- <script src="/js/sign.js"></script> -->
 </div>
 
 

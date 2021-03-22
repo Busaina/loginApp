@@ -5,6 +5,7 @@ const credentials = {
   email: ["a@gmail.com"],
   password: ["a"],
   incorrect: false,
+  username: ["a"],
 };
 
 router.post("/login", (req, res) => {
@@ -21,6 +22,8 @@ router.post("/login", (req, res) => {
       req.body.password
   ) {
     req.session.user = req.body.email;
+    const index = credentials.email.indexOf(req.body.email);
+    req.session.username = credentials.username[index];
     console.log(credentials.email);
     res.redirect("/route/dashboard");
   } else {
@@ -42,9 +45,11 @@ router.post("/signup", (req, res) => {
   if (!credentials.email.includes(req.body.email)) {
     credentials.email.push(req.body.email);
     credentials.password.push(req.body.password);
+    credentials.username.push(req.body.username);
     req.session.user = req.body.email;
+    req.session.username = req.body.username;
     console.log(credentials.email);
-
+    console.log(credentials.username);
     res.redirect("/route/dashboard");
   } else {
     credentials.incorrect = true;
@@ -57,7 +62,10 @@ router.post("/signup", (req, res) => {
 
 router.get("/dashboard", (req, res) => {
   if (req.session.user) {
-    res.render("example", { user: req.session.user });
+    res.render("example", {
+      user: req.session.user,
+      username: req.session.username,
+    });
   } else {
     res.send("unauthorised User");
   }

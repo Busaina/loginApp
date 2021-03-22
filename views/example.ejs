@@ -2,11 +2,11 @@
 
         <div class="text-center center-div" id='login'>
             <div class="container w-25 border py-5 mt-5 fmbg">
-                Chat App
-                
+                <h3>Chat App</h3>
+                <h5 id="username"><%=locals.username?username:"User"%></h5>
                 <form id="message-form">
         
-                    <input name="name" class="form-control" placeholder="name">
+                    <!-- <input name="name" class="form-control" placeholder="name"> -->
                     <input name="message"  class="form-control" placeholder="Message" id="msg"><br>
                     <button class='btn btn-success rounded-pill'>Send</button><br><br>
         
@@ -19,7 +19,6 @@
 
         
         </div>
-        <!-- <button id="send-location">Send location</button> -->
         <script src="/js/socket.io/client-dist/socket.io.js"></script>
         <script src="/js/chat.js"></script>
     <%-include('footer')-%>

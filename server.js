@@ -29,14 +29,23 @@ const publicDirectoryPath = path.join(__dirname, "public");
 app.use(express.static(publicDirectoryPath));
 
 io.on("connection", (socket) => {
+  let loggedInUser;
   console.log("New WebSocket connection");
   let name = "";
   socket.on("dis", (n) => {
     name = n;
   });
+  // let person = "";
+  // socket.on("username", (per) => {
+  //   person = per;
+  // });
 
-  socket.emit("message", `Welcome!`);
-  socket.broadcast.emit("message", "..");
+  socket.on("username", (per) => {
+    loggedInUser = per;
+    socket.emit("notice", `Welcome ${per}!`);
+    // console.log("user" + person);
+    socket.broadcast.emit("notice", `${per} has joined`);
+  });
 
   socket.on("sendMessage", (message, callback) => {
     const filter = new Filter();
@@ -58,7 +67,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    io.emit("message", `${name} has left`);
+    io.emit("left", loggedInUser);
+    // io.emit("message", `${name} has left`);
   });
 });
 
