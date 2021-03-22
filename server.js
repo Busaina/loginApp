@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
   });
 
   socket.emit("message", `Welcome!`);
-  socket.broadcast.emit("message");
+  socket.broadcast.emit("message", "..");
 
   socket.on("sendMessage", (message, callback) => {
     const filter = new Filter();
