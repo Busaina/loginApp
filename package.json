@@ -17,6 +17,8 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "math": "^0.0.3",
+    "node-emoji": "^1.10.0",
     "nodemon": "^2.0.7",
     "socket.io": "^4.0.0",
     "uuid": "^8.3.2",

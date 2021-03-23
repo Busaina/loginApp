@@ -9,7 +9,8 @@ const router = require("./router");
 const http = require("http");
 const socketio = require("socket.io");
 const Filter = require("bad-words");
-
+const emoji = require("node-emoji");
+const Math = require("math");
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(
@@ -42,7 +43,20 @@ io.on("connection", (socket) => {
 
   socket.on("username", (per) => {
     loggedInUser = per;
-    socket.emit("notice", `Welcome ${per}!`);
+    let ran = [
+      "cake",
+      "pizza",
+      "apple",
+      "tada",
+      "smile",
+      "cry",
+      "man",
+      "girl",
+      "baby",
+      "watermelon",
+    ];
+    const pizza = emoji.get("ran[Math.floor(Math.random() * ran.length)]");
+    socket.emit("notice", `Welcome ${per} ${pizza}!`);
     // console.log("user" + person);
     socket.broadcast.emit("notice", `${per} has joined`);
   });

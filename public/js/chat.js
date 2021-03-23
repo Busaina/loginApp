@@ -4,7 +4,6 @@ const socket = io();
 const $messageForm = document.querySelector("#message-form");
 const $messageFormInput = $messageForm.querySelector("#msg");
 const $messageFormButton = $messageForm.querySelector("button");
-
 const name = document.getElementById("username").innerText;
 // const $sendLocationButton = document.querySelector('#send-location')
 
@@ -29,7 +28,7 @@ $messageForm.addEventListener("submit", (e) => {
 
   const message = e.target.elements.message.value;
   let date = new Date();
-  let tm = (date.getHours() + ":" + date.getMinutes());
+  let tm = date.getHours() + ":" + date.getMinutes();
   const str = name + " : " + message + " ( " + tm + " )";
 
   socket.emit("sendMessage", str, (error) => {
