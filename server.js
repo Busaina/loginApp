@@ -9,7 +9,6 @@ const router = require("./router");
 const http = require("http");
 const socketio = require("socket.io");
 const Filter = require("bad-words");
-const chalk = require("chalk");
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -54,11 +53,7 @@ io.on("connection", (socket) => {
     if (filter.isProfane(message)) {
       return callback("..");
     }
-    let date = new Date();
-    io.emit(
-      "message",
-      `${message} ( ${chalk.red(date.getHours() + ":" + date.getMinutes())} )`
-    );
+    io.emit("message", message);
     callback();
   });
 
