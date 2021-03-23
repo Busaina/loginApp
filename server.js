@@ -55,7 +55,7 @@ io.on("connection", (socket) => {
       "baby",
       "watermelon",
     ];
-    const pizza = emoji.get("ran[Math.floor(Math.random() * ran.length)]");
+    const pizza = emoji.get(ran[Math.floor(Math.random() * ran.length)]);
     socket.emit("notice", `Welcome ${per} ${pizza}!`);
     // console.log("user" + person);
     socket.broadcast.emit("notice", `${per} has joined`);
