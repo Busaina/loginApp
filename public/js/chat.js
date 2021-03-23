@@ -28,16 +28,7 @@ $messageForm.addEventListener("submit", (e) => {
   $messageFormButton.setAttribute("disabled", "disabled");
 
   const message = e.target.elements.message.value;
-  let date = new Date();
-  const str =
-    name +
-    " : " +
-    message +
-    " ( " +
-    date.getHours() +
-    ":" +
-    date.getMinutes() +
-    " )";
+  const str = name + " : " + message;
 
   socket.emit("sendMessage", str, (error) => {
     $messageFormButton.removeAttribute("disabled");
